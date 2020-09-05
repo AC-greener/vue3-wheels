@@ -1,10 +1,11 @@
 <template>
 <div class="topnav">
-  <div class="logo" @click='toggleAside'>LOGO</div>
+  <div class="logo" >LOGO</div>
   <ul class="menu">
     <li>菜单1</li>
     <li>菜单2</li>
   </ul>
+   <span @click="toggleAside" class="toggleAside"></span>
 </div>
 </template>
 
@@ -13,8 +14,7 @@ import { inject, Ref } from 'vue'
 export default {
   name: 'TopNav',
   setup() {
-    const asideVisible =  inject<Ref<boolean>>('xxx')
-    console.log(asideVisible.value)
+    const asideVisible =  inject<Ref<boolean>>('asideVisible')
     const toggleAside = () => {
       asideVisible.value = !asideVisible.value
     }
@@ -32,7 +32,8 @@ export default {
   padding: 16px;
   position: relative;
   z-index: 10;
-
+  justify-content: center;
+  align-items: center;
   >.logo {
     max-width: 6em;
     margin-right: auto;
@@ -45,6 +46,27 @@ export default {
 
     >li {
       margin: 0 1em;
+    }
+  }
+    > .toggleAside {
+      width: 24px;
+      height: 24px;
+      background: red;
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: none;
+    }
+  @media (max-width:500px) {
+    > .menu {
+      display: none;
+    }
+    > .logo {
+      margin: 0 auto;
+    }
+    > .toggleAside {
+      display: inline-block;
     }
   }
 }
