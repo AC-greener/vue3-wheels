@@ -1,14 +1,15 @@
 <template>
-<div>hello</div>
+<h1>
+  导航栏
+  <br />
+  <router-link to='/'>首页</router-link>
+  <router-link to='/xxx'>Hello</router-link>
+</h1>
+<router-view />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
 }
 </script>
