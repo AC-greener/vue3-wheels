@@ -6,7 +6,7 @@
     <h2>一个厉害的 UI 框架</h2>
     <p class="actions">
       <a>GitHub</a>
-      <a>开始</a>
+      <router-link to='/doc'>开始</router-link>
     </p>
   </div>
 </div>
@@ -22,23 +22,27 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.topnav {
-  background: pink;
+.banner {
+  padding: 100px 0;
   display: flex;
-  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: lightgreen;
 
-  >.logo {
-    max-width: 6em;
-    margin-right: auto;
-  }
 
-  >.menu {
-    display: flex;
-    white-space: nowrap;
-    flex-wrap: nowrap;
+  >.actions {
+    padding: 8px 0;
 
-    >li {
-      margin: 0 1em;
+    a {
+      margin: 0 8px;
+      background: #fff;
+      display: inline-block;
+      $h: 28px;
+      height: $h;
+      line-height: $h;
+      border-radius: $h/2;
+      padding: 0 8px;
     }
   }
 }
