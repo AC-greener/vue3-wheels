@@ -1,5 +1,5 @@
 <template>
-    <button class="gulu-button" :class="classes" v-bind="$attrs">
+    <button class="gulu-button"  :disabled="disabled" :class="classes" v-bind="$attrs">
       <slot />
     </button>
 </template>
@@ -17,9 +17,13 @@ export default {
       type: String,
       default: "normal",
     },
-        level: {
+    level: {
       type: String,
       default: "normal",
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   inheritAttrs: false,
@@ -53,6 +57,7 @@ $color: #333;
 $blue: #40a9ff;
 $radius: 4px;
 $red: red;
+$grey: grey;
 .gulu-button {
   box-sizing: border-box;
   height: $h;
@@ -130,6 +135,7 @@ $red: red;
         }
       }
   }
+  
   &.gulu-theme-link {
     &.gulu-level-danger {
       color: $red;
@@ -153,6 +159,22 @@ $red: red;
       &:focus {
         color: darken($red, 10%);
       }
+    }
+  }
+
+  &.gulu-theme-button {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
+      &:hover {
+        border-color: $grey;
+      }
+    }
+  }
+  &.gulu-theme-link, &.gulu-theme-text {
+    &[disabled] {
+      cursor: not-allowed;
+      color: $grey;
     }
   }
 }
