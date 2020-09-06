@@ -1,5 +1,6 @@
 <template>
     <button class="gulu-button"  :disabled="disabled" :class="classes" v-bind="$attrs">
+      <span v-if="loading" class="gulu-loadingIndicator"></span>
       <slot />
     </button>
 </template>
@@ -25,16 +26,16 @@ export default {
       type: Boolean,
       default: false,
     },
+    loading: {
+      type: Boolean,
+      default: false
+    }
   },
   inheritAttrs: false,
   setup(props, context) {
     // console.log({...props})
     // console.log({...context.attrs})
-    const  { theme, size, level } = props
-    console.log(        {
-          [`gulu-theme-${theme}`]: theme,
-          [`gulu-theme-${size}`]: size
-        })
+    const  { theme, size, level, loading } = props
     const classes = computed(() => {
       return [
         {
@@ -135,7 +136,7 @@ $grey: grey;
         }
       }
   }
-  
+
   &.gulu-theme-link {
     &.gulu-level-danger {
       color: $red;
@@ -176,6 +177,21 @@ $grey: grey;
       cursor: not-allowed;
       color: $grey;
     }
+  }
+  > .gulu-loadingIndicator{
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+    margin-right: 4px;
+    border-radius: 8px; 
+    border-color: $blue $blue $blue transparent;
+    border-style: solid;
+    border-width: 2px;
+    animation: gulu-spin 1s infinite linear;
+  }
+  @keyframes gulu-spin {
+    0%{transform: rotate(0deg)} 
+    100%{transform: rotate(360deg)} 
   }
 }
 </style>
