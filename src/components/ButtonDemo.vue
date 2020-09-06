@@ -1,4 +1,6 @@
 <template>
+  <div>
+    theme实例
   <Button 
     @click="handelClick" 
     @focus="handelClick" 
@@ -7,25 +9,46 @@
   </Button>
   <Button 
     theme="link"
-    @click="handelClick" 
-    @focus="handelClick" 
     @mouseover="handelClick">
     你好
   </Button>
   <Button 
     theme="text"
-    @click="handelClick" 
-    @focus="handelClick" 
     @mouseover="handelClick">
     你好
   </Button>
   <Button 
     theme="button"
-    @click="handelClick" 
-    @focus="handelClick" 
     @mouseover="handelClick">
     你好
   </Button>
+  </div>
+  <div>
+    size实例
+  <div>
+    <Button size="big">大大大</Button>
+    <Button>普普通</Button>
+    <Button size="small">小小小</Button>
+  </div>
+  <h1>示例3</h1>
+  <div>
+    <dir>
+      <Button level="main">主要按钮</Button>
+      <Button>普通按钮</Button>
+      <Button level="danger">危险按钮</Button>
+    </dir>
+    <dir>
+      <Button theme="link" level="main">主要链接按钮</Button>
+      <Button theme="link">普通链接按钮</Button>
+      <Button theme="link" level="danger">危险链接按钮</Button>
+    </dir>
+    <dir>
+      <Button theme="text" level="main">主要文字按钮</Button>
+      <Button theme="text">普通文字按钮</Button>
+      <Button theme="text" level="danger">危险文字按钮</Button>
+    </dir>
+  </div>
+  </div>
 </template>
 <script lang="ts">
 import Button from '../lib/Button.vue'
