@@ -1,6 +1,26 @@
 <template>
   <Button 
-    size='small'
+    @click="handelClick" 
+    @focus="handelClick" 
+    @mouseover="handelClick">
+    你好
+  </Button>
+  <Button 
+    theme="link"
+    @click="handelClick" 
+    @focus="handelClick" 
+    @mouseover="handelClick">
+    你好
+  </Button>
+  <Button 
+    theme="text"
+    @click="handelClick" 
+    @focus="handelClick" 
+    @mouseover="handelClick">
+    你好
+  </Button>
+  <Button 
+    theme="button"
     @click="handelClick" 
     @focus="handelClick" 
     @mouseover="handelClick">
