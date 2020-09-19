@@ -26,16 +26,12 @@
 import Button from './Button.vue'
 export default {
   components: {
-    Button
+    Button 
   },
   props: {
     visible: {
       type: Boolean,
       default: false
-    },
-    title: {
-      type: String,
-      default: '提示',
     },
     ok: {
       type: Function
