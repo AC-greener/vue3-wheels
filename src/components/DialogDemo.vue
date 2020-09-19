@@ -4,8 +4,13 @@
     <h1>示例1111</h1>
     <Button @click="toggle">toggle</Button>
     <Dialog title="我的dialog" :visible="x" @update:visible="x = $event" :ok="f1" :cancel="f2">
-      <h1>hello</h1>
-      <h2>world</h2>
+      <template v-slot:content>
+        <h1>hello</h1>
+        <h2>world</h2>
+      </template>
+      <template v-slot:title>
+        <strong>加粗的标题</strong>
+      </template>
     </Dialog>
   </div>
 </template>
