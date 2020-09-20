@@ -1,8 +1,8 @@
 <template>
-<div  class="layout">
-  <TopNav class="nav" />
+<div class="layout">
+  <Topnav toggleMenuButtonVisible class="nav" />
   <div class="content">
-    <aside v-if="asideVisible">
+    <aside v-if="menuVisible">
       <h2>组件列表</h2>
       <ol>
         <li>
@@ -20,28 +20,30 @@
       </ol>
     </aside>
     <main>
-      <router-view></router-view>
+      <router-view />
     </main>
   </div>
 </div>
 </template>
 
 <script lang="ts">
-import TopNav from '../components/TopNav.vue'
-import { inject, Ref } from 'vue'
-import router from '../router'
+import Topnav from "../components/Topnav.vue";
+import {
+  inject,
+  Ref
+} from "vue";
 export default {
   components: {
-    TopNav
+    Topnav
   },
   setup() {
-    const asideVisible =  inject<Ref<boolean>>('asideVisible')
-
+    const menuVisible = inject < Ref < boolean >> ("menuVisible"); // get
+    console.log(menuVisible)
     return {
-      asideVisible
-    }
-  }
-}
+      menuVisible
+    };
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -49,24 +51,24 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  > .nav {
+  >.nav {
     flex-shrink: 0;
   }
-  > .content {
+  >.content {
     flex-grow: 1;
     padding-top: 60px;
     padding-left: 156px;
     @media (max-width: 500px) {
-      padding-left: 0; 
+      padding-left: 0;
     }
   }
 }
 .content {
   display: flex;
-  > aside {
+  >aside {
     flex-shrink: 0;
   }
-  > main {
+  >main {
     flex-grow: 1;
     padding: 16px;
     background: white;
@@ -84,14 +86,13 @@ aside {
   >h2 {
     margin-bottom: 4px;
   }
-
   >ol {
     >li {
       padding: 4px 0;
     }
   }
-  main {
-    overflow: auto;
-  }
+}
+main {
+  overflow: auto;
 }
 </style>
