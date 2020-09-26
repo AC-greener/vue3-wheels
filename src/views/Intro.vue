@@ -1,5 +1,4 @@
 <template>
-  <div>
-    介绍
-  </div>
+<Markdown path='../markdown/intro.md' />
 </template>
+
