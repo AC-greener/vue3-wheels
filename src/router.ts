@@ -16,9 +16,10 @@ const router = createRouter({
     {path: '/', component: Home},
     {path: '/doc', component: Doc, 
     children:[
-      { path: 'start', component: h(Markdown, { path: '../markdown/get-start.md', key: '1'}) },
-      { path: 'install', component: h(Markdown, { path: '../markdown/install.md', key: '2'}) },
-      { path: 'intro', component: h(Markdown, { path: '../markdown/intro.md', key: '3'}) },
+      { path: "", redirect: '/doc/intro' },
+      { path: 'start', component: h(Markdown as any, { path: '../markdown/get-start.md', key: '1'}) },
+      { path: 'install', component: h(Markdown as any, { path: '../markdown/install.md', key: '2'}) },
+      { path: 'intro', component: h(Markdown as any, { path: '../markdown/intro.md', key: '3'}) },
       { path: 'switch', component: Switch },
       { path: 'dialog', component: Dialog },
       { path: 'tabs', component: Tabs },
