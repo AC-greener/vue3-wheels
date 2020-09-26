@@ -9,21 +9,21 @@ import {
 } from 'vue'
 export default {
   props: {
-    path: {
+    content: {
       type: String,
       required: true
     }
   },
   setup(props) {
-    const content = ref < string > (null)
-    // 异步import
-    import(props.path).then(result => {
-      console.log(result)
-      content.value = result.default
-    })
-    return {
-      content
-    }
+    // const content = ref < string > (null)
+    // // 异步import
+    // import(props.path).then(result => {
+    //   console.log(result)
+    //   content.value = result.default
+    // })
+    // return {
+    //   content
+    // }
   }
 }
 </script>
