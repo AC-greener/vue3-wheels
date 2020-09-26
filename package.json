@@ -1,6 +1,6 @@
 {
   "name": "vue3-wheel",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "files": ["dist/lib/*"],
   "main": "dist/lib/gulu.js",
   "scripts": {

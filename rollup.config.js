@@ -12,6 +12,7 @@ export default {
     globals: {
       vue: 'Vue'
     },
+    //导出的全局变量名字
     name: 'Gulu',
     file: 'dist/lib/gulu.js',
     format: 'umd',
