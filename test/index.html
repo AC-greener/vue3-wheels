@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Testing</title>
+  <link href="https://unpkg.com/mocha@4.0.1/mocha.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/chai@4.1.2/chai.js"></script>
+  <script src="https://unpkg.com/mocha@4.0.1/mocha.js"></script>
+  <style>
+    #meta > * {
+      margin: 20px 50px 0 50px;
+      font-weight: 200;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    #meta > h1 { font-size: 2em; }
+    #meta > h2 { font-size: 1.5em; }
+
+    #root {
+      margin: 20px 50px 0 50px;
+    }
+  </style>
+  <script>
+    mocha.setup('bdd')
+    window.expect = chai.expect
+    (async function() {
+      beforeEach(() => {
+        delete window["__VUE_DEVTOOLS_TOAST__"]
+
+        const existingRoot = document.getElementById('root')
+        if (existingRoot) {
+          existingRoot.innerHTML = ''
+          return
+        }
+        const root = document.createElement('div')
+        root.id = 'root'
+        document.body.appendChild(root)
+      })
+
+      afterEach(() => {
+        document.getElementById('root').remove()
+      })
+
+      const response = await fetch('/test-files')
+      const files = await response.json()
+
+      await Promise.all(files.map(file => import(file)))
+
+      mocha.setup({ reporter: 'html' })
+      mocha.checkLeaks()
+      mocha.run()
+    })()
+  </script>
+</head>
+<body>
+  <div id="meta">
+    <h2>Mocha HTML Reporter</h2>
+    <div>
+      <div id="mocha" style="margin: 0;"></div>
+    </div>
+  </div>
+</body>
+</html>
